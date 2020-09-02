@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/staffOrder_drawer_explorer"
+            android:icon="@drawable/ic_baseline_notifications_none_black"
+            android:title="Customer Order"/>
+        <item
+            android:id="@+id/staffDelivery_drawer_myOrder"
+            android:icon="@drawable/shipping"
+            android:title="Delivery"/>
+        <item
+            android:id="@+id/staffProfile_drawer_myProfile"
+            android:icon="@drawable/ic_person"
+            android:title="My Profile"/>
+        <item
+            android:id="@+id/staffAddress_drawer_myAddresses"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="My Addresses"/>
+        <item
+            android:id="@+id/staff_drawer_myHelp"
+            android:icon="@drawable/ic_baseline_help_outline_24"
+            android:title="Help Center"/>
+    </group>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/staff_drawer_item_settings"
+            android:title="Settings">
+        </item>
+
+        <item
+            android:id="@+id/staff_drawer_item_tAndC"
+            android:title="Terms and Conditions / Privacy">
+        </item>
+
+        <item
+            android:id="@+id/staff_drawer_items_logout"
+            android:title="Log Out">
+        </item>
+    </group>
+</menu>

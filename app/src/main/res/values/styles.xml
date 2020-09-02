@@ -1,0 +1,54 @@
+<resources>
+    <!-- Base application theme. -->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/dogerblue</item>
+        <item name="colorPrimaryDark">@color/dogerblue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="color">@color/dogerblue</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+
+        <item  name="spinBars">true</item>
+        <item name="color">@color/dogerblue</item>
+
+    </style>
+
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/royalBlue</item>
+        <item name="android:textColorSecondary">@color/royalBlue</item>
+        <item name="actionMenuTextColor">@color/royalBlue</item>
+    </style>
+
+    <style name="CollapseAppbar" parent="@style/TextAppearance.AppCompat.Medium">
+
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">normal</item>
+
+    </style>
+
+    <style name="ExpandedAppBar" parent="@style/TextAppearance.AppCompat.Title">
+
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">normal</item>
+
+    </style>
+
+
+</resources>

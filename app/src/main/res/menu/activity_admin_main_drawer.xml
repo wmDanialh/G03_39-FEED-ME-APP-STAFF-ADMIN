@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/adminOrder_drawer_explorer"
+            android:icon="@drawable/ic_baseline_notifications_none_black"
+            android:title="Customer Orders"/>
+        <item
+            android:id="@+id/adminMenuManagement_drawer_myOrder"
+            android:icon="@drawable/ic_baseline_restaurant_menu_24"
+            android:title="Menu Management"/>
+        <item
+            android:id="@+id/adminStaffMangement_drawer_myOrderStatus"
+            android:icon="@drawable/management"
+            android:title="Staff Management"/>
+        <item
+            android:id="@+id/adminViewCustomer_drawer_myAddresses"
+            android:icon="@drawable/ic_baseline_contacts_24"
+            android:title="My Customer"/>
+        <item
+            android:id="@+id/adminProfile_drawer_myProfile"
+            android:icon="@drawable/ic_person"
+            android:title="My Profile"/>
+    </group>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/staff_drawer_item_settings"
+            android:title="Settings">
+        </item>
+
+        <item
+            android:id="@+id/staff_drawer_item_tAndC"
+            android:title="Terms and Conditions / Privacy">
+        </item>
+
+        <item
+            android:id="@+id/staff_drawer_items_logout"
+            android:title="Log Out">
+        </item>
+    </group>
+</menu>
