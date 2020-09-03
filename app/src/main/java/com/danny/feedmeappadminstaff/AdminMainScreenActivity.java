@@ -58,6 +58,8 @@ public class AdminMainScreenActivity extends AppCompatActivity implements Naviga
                 int id = item.getItemId();
                 switch (id){
                     case R.id.adminOrder_drawer_explorer:
+                        Intent intent1 = new Intent(AdminMainScreenActivity.this, AdminCustomerOrdersActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.adminMenuManagement_drawer_myOrder:
                         Intent intent2 = new Intent(AdminMainScreenActivity.this,MenuManagementActivity.class);

@@ -1,15 +1,19 @@
 package com.danny.feedmeappadminstaff.Holder;
 
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.danny.feedmeappadminstaff.Common.Common;
 import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
 import com.danny.feedmeappadminstaff.R;
 
-public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FoodViewHolder extends RecyclerView.ViewHolder implements
+        View.OnClickListener,
+        View.OnCreateContextMenuListener{
 
     public TextView food_name;
     public ImageView food_image;
@@ -35,4 +39,9 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         itemClickListener.onClick(view,getAdapterPosition(),false);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+        contextMenu.add(0,0,getAdapterPosition(), Common.UPDATE);
+        contextMenu.add(0,1,getAdapterPosition(), Common.DELETE);
+    }
 }

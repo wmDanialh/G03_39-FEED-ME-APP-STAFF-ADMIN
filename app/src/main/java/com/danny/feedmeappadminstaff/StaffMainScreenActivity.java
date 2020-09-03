@@ -58,19 +58,21 @@ public class StaffMainScreenActivity extends AppCompatActivity implements Naviga
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.admin_nav_view);
+        navigationView = (NavigationView) findViewById(R.id.staff_nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch (id){
-                    case R.id.adminOrder_drawer_explorer:
+                    case R.id.staffOrder_drawer_explorer:
+                        Intent intent = new Intent(StaffMainScreenActivity.this, StaffCustomerOrdersActivity.class);
+                        startActivity(intent);
                         break;
-                    case R.id.adminMenuManagement_drawer_myOrder:
+                    case R.id.staffDelivery_drawer_myOrder:
                         break;
-                    case R.id.adminStaffMangement_drawer_myOrderStatus:
+                    case R.id.staffProfile_drawer_myProfile:
                         break;
-                    case R.id.adminProfile_drawer_myProfile: ;
+                    case R.id.staffAddress_drawer_myAddresses: ;
                         break;
                     case R.id.adminViewCustomer_drawer_myAddresses:
                         break;
