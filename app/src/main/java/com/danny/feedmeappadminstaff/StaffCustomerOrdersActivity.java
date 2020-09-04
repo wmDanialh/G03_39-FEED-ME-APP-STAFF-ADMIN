@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -86,7 +87,7 @@ public class StaffCustomerOrdersActivity extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<Request, StaffOrderViewHolder>(foodOptions) {
             @Override
-            protected void onBindViewHolder(@NonNull StaffOrderViewHolder holder, int position, @NonNull Request model) {
+            protected void onBindViewHolder(@NonNull StaffOrderViewHolder holder, int position, @NonNull final Request model) {
 
                 holder.txtOrderId.setText(adapter.getRef(position).getKey());
                 holder.txtOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
@@ -96,7 +97,9 @@ public class StaffCustomerOrdersActivity extends AppCompatActivity {
                 holder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-
+                        Intent trackingOrder = new Intent(StaffCustomerOrdersActivity.this, TrackingOrder.class);
+                        Common.currentRequest = model;
+                        startActivity(trackingOrder);
                     }
                 });
             }

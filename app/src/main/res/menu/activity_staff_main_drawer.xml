@@ -11,10 +11,6 @@
             android:icon="@drawable/ic_baseline_notifications_none_black"
             android:title="Customer Order"/>
         <item
-            android:id="@+id/staffDelivery_drawer_myOrder"
-            android:icon="@drawable/shipping"
-            android:title="Delivery"/>
-        <item
             android:id="@+id/staffProfile_drawer_myProfile"
             android:icon="@drawable/ic_person"
             android:title="My Profile"/>

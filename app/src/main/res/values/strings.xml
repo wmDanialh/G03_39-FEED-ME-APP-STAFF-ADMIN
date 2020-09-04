@@ -23,4 +23,5 @@
     <string name="title_activity_user_main2">UserMainActivity2</string>
     <string name="title_activity_staff_main_screen">StaffMainScreenActivity</string>
     <string name="title_activity_test_drawer">TestDrawerActivity</string>
+    <string name="title_activity_tracking_order">Map</string>
 </resources>

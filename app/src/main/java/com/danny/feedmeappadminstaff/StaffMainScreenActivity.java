@@ -68,8 +68,6 @@ public class StaffMainScreenActivity extends AppCompatActivity implements Naviga
                         Intent intent = new Intent(StaffMainScreenActivity.this, StaffCustomerOrdersActivity.class);
                         startActivity(intent);
                         break;
-                    case R.id.staffDelivery_drawer_myOrder:
-                        break;
                     case R.id.staffProfile_drawer_myProfile:
                         break;
                     case R.id.staffAddress_drawer_myAddresses: ;
