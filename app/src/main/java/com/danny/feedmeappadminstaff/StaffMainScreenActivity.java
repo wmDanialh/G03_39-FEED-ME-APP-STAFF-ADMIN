@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.danny.feedmeappadminstaff.Service.ListenOrder;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +44,10 @@ public class StaffMainScreenActivity extends AppCompatActivity implements Naviga
         toolbar.setTitle("");
 
         setSupportActionBar(toolbar);
+
+        //Call Service
+        Intent service = new Intent(StaffMainScreenActivity.this, ListenOrder.class);
+        startService(service);
 
         //Init Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
