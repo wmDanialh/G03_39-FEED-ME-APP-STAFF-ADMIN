@@ -109,6 +109,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:layout_gravity="end"
+                android:layout_marginTop="20dp"
+                android:id="@+id/confirm_order"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|start"
+                android:textAllCaps="true"
+                android:text="CONFIRMED"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
         <ImageView
