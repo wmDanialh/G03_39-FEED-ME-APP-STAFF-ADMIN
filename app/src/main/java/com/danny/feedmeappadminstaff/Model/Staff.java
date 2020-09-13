@@ -2,31 +2,21 @@ package com.danny.feedmeappadminstaff.Model;
 
 public class Staff {
 
-    private String staffImage;
     public String staffMobile;
     public String staffName;
     public String staffEmail;
-    private String staffAddress;
-    private String uid;
+    public String staffAddress;
+    public String uid;
 
     public Staff() {
     }
 
-    public Staff(String staffImage, String staffMobile, String staffName, String staffEmail, String staffAddress, String uid) {
-        this.staffImage = staffImage;
+    public Staff(String staffAddress,String staffEmail, String staffMobile, String staffName , String uid) {
+        this.staffAddress = staffAddress;
+        this.staffEmail = staffEmail;
         this.staffMobile = staffMobile;
         this.staffName = staffName;
-        this.staffEmail = staffEmail;
-        this.staffAddress = staffAddress;
         this.uid = uid;
-    }
-
-    public String getStaffImage() {
-        return staffImage;
-    }
-
-    public void setStaffImage(String staffImage) {
-        this.staffImage = staffImage;
     }
 
     public String getStaffMobile() {

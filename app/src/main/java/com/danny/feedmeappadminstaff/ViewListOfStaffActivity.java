@@ -115,9 +115,10 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(@NonNull StaffViewHolder holder, int position, @NonNull Staff model) {
-                /*
-                holder.txtMenuName.setText(model.getName());
-                Picasso.with(getBaseContext()).load(model.getImage()).fit().into(holder.imageView);
+
+                holder.mNameTv.setText(model.getStaffName());
+                holder.mEmailTv.setText(model.getStaffEmail());
+                //Picasso.with(getBaseContext()).load(model.getStaffImage()).fit().into(holder.mAvatarIv);
 
                 final Staff clickItem = model;
                 holder.setItemClickListener(new ItemClickListener() {
@@ -125,11 +126,11 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
                     public void onClick(View view, int position, boolean isLongClick) {
                         //Get Category Id and send to new activity
                         //Because CategoryId is key, so we just get key of this item
-                        Toast.makeText(ViewListOfStaffActivity.this, "" + clickItem.getName(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewListOfStaffActivity.this, "" + clickItem.getStaffName(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
-                 */
+
             }
             @NonNull
             @Override

@@ -13,8 +13,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StaffViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    CircleImageView mAvatarIv;
-    TextView mNameTv, mEmailTv;
+    public CircleImageView mAvatarIv;
+    public TextView mNameTv, mEmailTv;
 
     private ItemClickListener itemClickListener;
 

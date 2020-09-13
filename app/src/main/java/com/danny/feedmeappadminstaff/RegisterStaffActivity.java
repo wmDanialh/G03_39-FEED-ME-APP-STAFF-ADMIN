@@ -271,12 +271,13 @@ public class RegisterStaffActivity extends AppCompatActivity {
         String password = staffPassword.getText().toString();
         String email = staffEmail.getText().toString();
         String mobile = staffMobile.getText().toString();
+        String address = staffAddress.getText().toString();
     }
 
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference("Staff").child(firebaseAuth.getUid());
-        Staff userProfile = new Staff(name, email, mobile ,address, image, uid);
+        Staff userProfile = new Staff(address,email, mobile, name, uid);
         myRef.setValue(userProfile);
     }
 
