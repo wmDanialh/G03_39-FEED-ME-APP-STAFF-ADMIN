@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.danny.feedmeappadminstaff.Adapter.AdapterStaff;
+import com.danny.feedmeappadminstaff.Common.Common;
 import com.danny.feedmeappadminstaff.Holder.StaffViewHolder;
 import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
 import com.danny.feedmeappadminstaff.Model.Staff;
@@ -38,6 +40,8 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Staff> usersList;
 
+    private FirebaseAuth firebaseAuth;
+
     FirebaseRecyclerAdapter<Staff, StaffViewHolder> adapter;
 
     @Override
@@ -55,6 +59,8 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.staff_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         usersList = new ArrayList<>();
 
@@ -144,5 +150,19 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getTitle().equals(Common.DELETE))
+        {
+            deleteStaff(adapter.getRef(item.getOrder()).getKey());
+        }
+        return super.onContextItemSelected(item);
+    }
 
+    private void deleteStaff(String key) {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference staff = firebaseDatabase.getReference("Staff").child(firebaseAuth.getUid());
+        //Staff userProfile = new Staff(address,email, mobile, name, uid);
+        staff.child(key).removeValue();
+    }
 }
