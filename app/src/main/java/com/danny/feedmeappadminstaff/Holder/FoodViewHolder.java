@@ -11,9 +11,7 @@ import com.danny.feedmeappadminstaff.Common.Common;
 import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
 import com.danny.feedmeappadminstaff.R;
 
-public class FoodViewHolder extends RecyclerView.ViewHolder implements
-        View.OnClickListener,
-        View.OnCreateContextMenuListener{
+public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener{
 
     public TextView food_name;
     public ImageView food_image;
@@ -31,6 +29,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements
         food_image = (ImageView) itemView.findViewById(R.id.food_image);
 
         itemView.setOnClickListener(this);
+        itemView.setOnCreateContextMenuListener(this);
 
     }
 
