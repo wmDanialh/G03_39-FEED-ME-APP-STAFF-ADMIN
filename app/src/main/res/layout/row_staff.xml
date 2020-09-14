@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    app:cardCornerRadius="10dp"
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="3dp"
@@ -20,8 +19,12 @@
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/dogerblue"
+            android:layout_marginTop="2dp"
             android:id="@+id/avatarImg"
-            android:src="@drawable/user"
+            android:src="@drawable/staf"
+            android:layout_gravity="center"
             android:layout_width="70dp"
             android:layout_height="70dp"/>
 
@@ -33,13 +36,13 @@
             <TextView
                 android:id="@+id/nameStaff"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Staff Name"
-                android:textSize="18sp"
+                android:fontFamily="@font/montserrat"
+                android:textSize="20sp"
                 android:textColor="#000"/>
 
             <TextView
@@ -49,7 +52,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Email Staff"
-                android:textSize="18sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/numberStaff"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Number Staff"
+                android:textSize="15sp"
+                android:fontFamily="@font/montserrat"
                 android:textColor="#000"/>
 
         </LinearLayout>

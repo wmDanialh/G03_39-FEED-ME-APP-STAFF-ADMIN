@@ -50,10 +50,10 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="50dp"
-                    android:src="@drawable/user"
+                    android:src="@drawable/staf"
                     android:layout_centerHorizontal="true"
                     app:civ_border_overlay="true"
-                    app:civ_border_color="#000"
+                    app:civ_border_color="@color/dogerblue"
                     app:civ_border_width="1dp"/>
 
                 <RelativeLayout

@@ -116,6 +116,7 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(@NonNull StaffViewHolder holder, int position, @NonNull Staff model) {
 
+                holder.mNumberTv.setText(model.getStaffMobile());
                 holder.mNameTv.setText(model.getStaffName());
                 holder.mEmailTv.setText(model.getStaffEmail());
                 //Picasso.with(getBaseContext()).load(model.getStaffImage()).fit().into(holder.mAvatarIv);

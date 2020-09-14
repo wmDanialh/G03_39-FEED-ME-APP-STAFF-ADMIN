@@ -14,7 +14,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class StaffViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public CircleImageView mAvatarIv;
-    public TextView mNameTv, mEmailTv;
+    public TextView mNameTv, mEmailTv, mNumberTv;
 
     private ItemClickListener itemClickListener;
 
@@ -24,6 +24,7 @@ public class StaffViewHolder extends RecyclerView.ViewHolder implements View.OnC
         mAvatarIv = itemView.findViewById(R.id.avatarImg);
         mNameTv = itemView.findViewById(R.id.nameStaff);
         mEmailTv = itemView.findViewById(R.id.emailStaff);
+        mNumberTv = itemView.findViewById(R.id.numberStaff);
 
         itemView.setOnClickListener(this);
     }
