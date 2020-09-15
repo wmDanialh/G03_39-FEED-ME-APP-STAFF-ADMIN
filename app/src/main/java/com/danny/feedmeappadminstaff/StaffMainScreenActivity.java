@@ -74,6 +74,8 @@ public class StaffMainScreenActivity extends AppCompatActivity implements Naviga
                         startActivity(intent);
                         break;
                     case R.id.staffProfile_drawer_myProfile:
+                        Intent intent2 = new Intent(StaffMainScreenActivity.this, StaffViewProfileActivity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.staffAddress_drawer_myAddresses: ;
                         break;

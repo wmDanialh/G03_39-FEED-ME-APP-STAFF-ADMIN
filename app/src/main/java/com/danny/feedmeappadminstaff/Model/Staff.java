@@ -19,6 +19,12 @@ public class Staff {
         this.uid = uid;
     }
 
+    public Staff(String name, String email, String mobile) {
+        this.staffEmail = email;
+        this.staffMobile = mobile;
+        this.staffName = name;
+    }
+
     public String getStaffMobile() {
         return staffMobile;
     }
