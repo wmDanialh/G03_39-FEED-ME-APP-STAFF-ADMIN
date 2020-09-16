@@ -57,6 +57,8 @@
         android:background="@color/colorWhite"
         android:padding="10dp"
         android:hint="Email"
+        android:focusable="false"
+        android:editable="false"
         android:inputType="textEmailAddress"
         android:drawableStart="@drawable/ic_email"
         android:layout_margin="10dp"/>

@@ -20,7 +20,8 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StaffChangePasswordActivity"></activity>
+        <activity android:name=".ViewListOfCustomerActivity"></activity>
+        <activity android:name=".StaffChangePasswordActivity" />
         <activity android:name=".StaffEditProfileActivity" />
         <activity android:name=".StaffViewProfileActivity" />
 

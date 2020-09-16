@@ -79,8 +79,6 @@ public class StaffMainScreenActivity extends AppCompatActivity implements Naviga
                         break;
                     case R.id.staffAddress_drawer_myAddresses: ;
                         break;
-                    case R.id.adminViewCustomer_drawer_myAddresses:
-                        break;
                     case R.id.staff_drawer_myHelp:
                         break;
                     case R.id.staff_drawer_item_settings:

@@ -66,12 +66,14 @@ public class AdminMainScreenActivity extends AppCompatActivity implements Naviga
                         startActivity(intent2);
                         break;
                     case R.id.adminStaffMangement_drawer_myOrderStatus:
-                        Intent intent = new Intent(AdminMainScreenActivity.this, ViewListOfStaffActivity.class);
-                        startActivity(intent);
+                        Intent intent3 = new Intent(AdminMainScreenActivity.this, ViewListOfStaffActivity.class);
+                        startActivity(intent3);
                         break;
                     case R.id.adminProfile_drawer_myProfile:
                         break;
-                    case R.id.adminViewCustomer_drawer_myAddresses:
+                    case R.id.adminViewCustomer_drawers:
+                        Intent intent4 = new Intent(AdminMainScreenActivity.this, ViewListOfCustomerActivity.class);
+                        startActivity(intent4);
                         break;
                     case R.id.staff_drawer_myHelp:
                         break;

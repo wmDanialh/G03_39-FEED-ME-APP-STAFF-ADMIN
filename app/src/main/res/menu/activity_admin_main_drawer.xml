@@ -19,7 +19,7 @@
             android:icon="@drawable/management"
             android:title="Staff Management"/>
         <item
-            android:id="@+id/adminViewCustomer_drawer_myAddresses"
+            android:id="@+id/adminViewCustomer_drawers"
             android:icon="@drawable/ic_baseline_contacts_24"
             android:title="My Customer"/>
         <item
