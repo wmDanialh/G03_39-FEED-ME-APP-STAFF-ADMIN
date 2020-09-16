@@ -9,20 +9,29 @@ public class Request {
     private String address;
     private String total;
     private String status;
+    private String comment;
     private List<Order> foods; // list of food order
 
     public Request() {
     }
 
-    public Request(String phone, String name,String address, String total, List<Order> foods) {
+    public Request(String name, String phone, String address, String total, String status, String comment, List<Order> foods) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.total = total;
-        this.foods = foods;
         this.status = "0";
+        this.comment = comment;
+        this.foods = foods;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public String getName() {
         return name;

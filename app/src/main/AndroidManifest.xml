@@ -20,15 +20,11 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewListOfCustomerActivity"></activity>
+        <activity android:name=".OrderDetailActivity"></activity>
+        <activity android:name=".ViewListOfCustomerActivity" />
         <activity android:name=".StaffChangePasswordActivity" />
         <activity android:name=".StaffEditProfileActivity" />
         <activity android:name=".StaffViewProfileActivity" />
-
-        <service
-            android:name=".Service.ListenOrder"
-            android:enabled="true"
-            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -46,10 +42,16 @@
             android:label="@string/title_activity_tracking_order" />
         <activity android:name=".StaffCustomerOrdersActivity" />
 
-        <service
-            android:name=".Services.ListenOrder"
-            android:enabled="true"
-            android:exported="true" />
+        <service android:name=".Service.MyAdminFirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Service.MyAdminFirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity android:name=".AdminCustomerOrdersActivity" />
         <activity android:name=".MenuFoodsManagementActivity" />

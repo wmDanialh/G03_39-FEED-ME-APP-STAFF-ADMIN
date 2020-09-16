@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -77,16 +78,41 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<Request, AdminOrderViewHolder>(foodOptions) {
             @Override
-            protected void onBindViewHolder(@NonNull AdminOrderViewHolder holder, int position, @NonNull Request model) {
+            protected void onBindViewHolder(@NonNull AdminOrderViewHolder holder, final int position, @NonNull final Request model) {
 
                 holder.txtOrderId.setText(adapter.getRef(position).getKey());
                 holder.txtOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
                 holder.txtOrderAddress.setText(model.getAddress());
                 holder.txtOrderPhone.setText(model.getPhone());
 
-                holder.setItemClickListener(new ItemClickListener() {
+                holder.btnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
+                    public void onClick(View view) {
+                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
+                    }
+                });
+
+                holder.btnRemove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        deleteOrder(adapter.getRef(position).getKey());
+
+                    }
+                });
+
+                holder.btnDetail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent orderDetail = new Intent(AdminCustomerOrdersActivity.this, OrderDetailActivity.class);
+                        Common.currentRequest = model;
+                        orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
+                        startActivity(orderDetail);
+                    }
+                });
+
+                holder.btnDirection.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
                     }
                 });
@@ -101,17 +127,6 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
         };
         adapter.startListening();
         recyclerView.setAdapter(adapter);
-
-    }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-
-        if(item.getTitle().equals("Update"))
-            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(),adapter.getItem(item.getOrder()));
-        else if(item.getTitle().equals(Common.DELETE))
-            deleteOrder(adapter.getRef(item.getOrder()).getKey());
-        return super.onContextItemSelected(item);
     }
 
     private void showUpdateDialog(String key, final Request item) {
@@ -135,6 +150,8 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
                 item.setStatus(String.valueOf(materialSpinner.getSelectedIndex()));
 
                 requests.child(localkey).setValue(item);
+                adapter.notifyDataSetChanged();
+
             }
         });
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -150,5 +167,6 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
 
     private void deleteOrder(String key) {
         requests.child(key).removeValue();
+        adapter.notifyDataSetChanged();
     }
 }

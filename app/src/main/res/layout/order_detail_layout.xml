@@ -1,6 +1,8 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order_info"
     android:layout_width="match_parent"
     android:layout_marginTop="10dp"
     android:layout_marginLeft="10dp"
@@ -29,101 +31,51 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FeedMe App Receipt"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="A-11, Jalan Tun Ismail 2, 25000 Kuantan, Pahang"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+6014-702 3124"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="wanmohddanialhakim@gmail.com"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:id="@+id/Staff_order_id"
+                android:id="@+id/admin_product_name"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:textAllCaps="true"
                 android:textStyle="bold"
-                android:text="#11111"
+                android:text="Product Name"
                 android:layout_width="wrap_content"
                 android:textColor="#000"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/Staff_order_status"
+                android:id="@+id/admin_product_quantity"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:textAllCaps="true"
                 android:textStyle="italic"
-                android:text="Status"
+                android:text="Product Quantity"
                 android:layout_width="wrap_content"
                 android:textColor="#000"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/Staff_order_phone"
+                android:id="@+id/admin_product_price"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:textAllCaps="true"
                 android:textStyle="italic"
-                android:text="0139035514"
+                android:text="Product Price"
                 android:layout_width="wrap_content"
                 android:textColor="#000"
                 android:layout_height="wrap_content"/>
 
             <TextView
-            android:id="@+id/Staff_order_address"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical|start"
-            android:textAllCaps="true"
-            android:textStyle="italic"
-            android:text="ADDRESS"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="end"
-                android:layout_marginTop="20dp"
-                android:id="@+id/confirm_order"
+                android:id="@+id/admin_product_discount"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
                 android:textAllCaps="true"
-                android:text="CONFIRMED"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"
+                android:textStyle="italic"
+                android:text="Product Discount"
                 android:textColor="#000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
-
 
     </LinearLayout>
 
