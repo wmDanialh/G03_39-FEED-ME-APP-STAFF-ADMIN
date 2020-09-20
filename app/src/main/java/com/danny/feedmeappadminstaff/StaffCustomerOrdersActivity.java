@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.danny.feedmeappadminstaff.Common.Common;
-import com.danny.feedmeappadminstaff.Holder.AdminOrderViewHolder;
 import com.danny.feedmeappadminstaff.Holder.StaffOrderViewHolder;
 import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
 import com.danny.feedmeappadminstaff.Model.Request;
@@ -87,21 +86,47 @@ public class StaffCustomerOrdersActivity extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<Request, StaffOrderViewHolder>(foodOptions) {
             @Override
-            protected void onBindViewHolder(@NonNull StaffOrderViewHolder holder, int position, @NonNull final Request model) {
+            protected void onBindViewHolder(@NonNull StaffOrderViewHolder holder, final int position, @NonNull final Request model) {
 
                 holder.txtOrderId.setText(adapter.getRef(position).getKey());
                 holder.txtOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
                 holder.txtOrderAddress.setText(model.getAddress());
                 holder.txtOrderPhone.setText(model.getPhone());
 
-                holder.setItemClickListener(new ItemClickListener() {
+                holder.btnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
-                        Intent trackingOrder = new Intent(StaffCustomerOrdersActivity.this, TrackingOrder.class);
+                    public void onClick(View view) {
+                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
+                    }
+                });
+
+                holder.btnRemove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        deleteOrder(adapter.getRef(position).getKey());
+
+                    }
+                });
+
+                holder.btnDetail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent orderDetail = new Intent(StaffCustomerOrdersActivity.this, AdminOrderDetailActivity.class);
+                        Common.currentRequest = model;
+                        orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
+                        startActivity(orderDetail);
+                    }
+                });
+
+                holder.btnDirection.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent trackingOrder = new Intent(StaffCustomerOrdersActivity.this, StaffTrackingOrderActivity.class);
                         Common.currentRequest = model;
                         startActivity(trackingOrder);
                     }
                 });
+
             }
 
             @NonNull
@@ -153,4 +178,6 @@ public class StaffCustomerOrdersActivity extends AppCompatActivity {
     private void deleteOrder(String key) {
         requests.child(key).removeValue();
     }
+
+
 }

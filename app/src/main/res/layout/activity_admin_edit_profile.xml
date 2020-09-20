@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminEditProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarAdminEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAdminEditProfile"
+            android:layout_width="match_parent"
+            app:theme="@style/ToolBarStyle"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgAdminEditProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:civ_border_overlay="true"
+        app:civ_border_color="#000"
+        android:layout_marginBottom="20dp"
+        app:civ_border_width="1dp"/>
+
+    <EditText
+        android:id="@+id/editAdminProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgAdminEditProfile"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Full Name"
+        android:inputType="textPersonName|textCapWords"
+        android:drawableStart="@drawable/ic_person"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editAdminEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editAdminProfileName"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Email"
+        android:focusable="false"
+        android:editable="false"
+        android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/ic_email"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editAdminMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editAdminEmail"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Mobile Number"
+        android:inputType="number"
+        android:drawableStart="@drawable/ic_phone"
+        android:layout_margin="10dp"/>
+
+
+    <Button
+        android:id="@+id/btnSaveAdmin"
+        android:layout_width="250dp"
+        android:background="@color/royalBlue"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@id/editAdminMobile"
+        android:layout_marginLeft="100dp"
+        android:text="Save"
+        android:layout_marginTop="50dp"/>
+
+
+</RelativeLayout>

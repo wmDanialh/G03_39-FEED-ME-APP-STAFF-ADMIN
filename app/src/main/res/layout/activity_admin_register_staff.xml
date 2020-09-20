@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/royalBlue"
+    tools:context=".AdminRegisterStaffActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarRegisterStaff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarRegisterStaff"
+            android:layout_width="match_parent"
+            app:theme="@style/ToolBarStyle"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_below="@id/appbarRegisterStaff"
+        android:layout_width="fill_parent"
+        android:fillViewport="true"
+        android:layout_weight="1"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- bunch of components here -->
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgRegisterStaff"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/staf"
+                android:layout_centerHorizontal="true"
+                app:civ_border_overlay="true"
+                app:civ_border_color="@color/dogerblue"
+                app:civ_border_width="1dp"/>
+
+            <RelativeLayout
+                android:layout_marginTop="350dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/layer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etStaffName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_person"
+                    android:layout_marginStart="30dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_marginEnd="30dp"
+                    android:hint="Full Name"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#000"
+                    android:textColorHint="#000" />
+
+                <RelativeLayout
+                    android:id="@+id/sp1"
+                    android:layout_below="@id/etStaffName"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="#B1B1B1" />
+
+                <EditText
+                    android:layout_below="@id/sp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/etStaffEmail"
+                    android:hint="Email"
+                    android:backgroundTint="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#000"
+                    android:textColorHint="#000"  />
+
+                <RelativeLayout
+                    android:id="@+id/sp2"
+                    android:layout_below="@id/etStaffEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="#B1B1B1" />
+
+                <EditText
+                    android:layout_below="@id/sp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etStaffPassword"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:hint="Password"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="#000"
+                    android:textColorHint="#000"  />
+
+                <RelativeLayout
+                    android:id="@+id/sp3"
+                    android:layout_below="@id/etStaffPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="#B1B1B1" />
+
+                <EditText
+                    android:layout_below="@+id/sp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etStaffMobile"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:hint="Mobile Number"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:textColor="#000"
+                    android:textColorHint="#000"  />
+
+                <RelativeLayout
+                    android:id="@+id/sp4"
+                    android:layout_below="@id/etStaffMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="#B1B1B1" />
+
+                <EditText
+                    android:layout_below="@+id/sp4"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/etStaffAddress"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:hint="Address"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="textLongMessage"
+                    android:padding="15dp"
+                    android:textColor="#000"
+                    android:textColorHint="#000"  />
+
+                <RelativeLayout
+                    android:id="@+id/sp5"
+                    android:layout_below="@id/etStaffAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#000"
+                    android:background="#B1B1B1" />
+
+                <Button
+                    android:id="@+id/btnRegisterStaff"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="Register Staff"
+                    android:tint="@android:color/white"
+                    android:textColor="#fff"
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/sp5"
+                    android:backgroundTint="@color/royalBlue"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

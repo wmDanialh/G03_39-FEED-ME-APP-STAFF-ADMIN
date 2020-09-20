@@ -2,6 +2,7 @@ package com.danny.feedmeappadminstaff.Holder;
 
 import android.view.ContextMenu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,9 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
 import com.danny.feedmeappadminstaff.R;
 
-    public class StaffOrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
+    public class StaffOrderViewHolder extends RecyclerView.ViewHolder{
 
         public TextView txtOrderId, txtOrderStatus, txtOrderAddress, txtOrderPhone;
+
+        public TextView stafftoviewtxtOrderId, stafftoviewtxtOrderStatus, stafftoviewtxtOrderAddress, stafftoviewtxtOrderPhone;
+
+        public Button btnEdit, btnRemove,btnDetail,btnDirection;
 
         private ItemClickListener itemClickListener;
 
@@ -24,23 +29,16 @@ import com.danny.feedmeappadminstaff.R;
             txtOrderId = (TextView) itemView.findViewById(R.id.Staff_order_id);
             txtOrderPhone = (TextView) itemView.findViewById(R.id.Staff_order_phone);
 
-            itemView.setOnClickListener(this);
-            itemView.setOnCreateContextMenuListener(this);
-        }
+            stafftoviewtxtOrderAddress = (TextView) itemView.findViewById(R.id.staff_order_address_toview);
+            stafftoviewtxtOrderStatus = (TextView) itemView.findViewById(R.id.staff_order_status_toview);
+            stafftoviewtxtOrderId = (TextView) itemView.findViewById(R.id.staff_order_id_toView);
+            stafftoviewtxtOrderPhone = (TextView) itemView.findViewById(R.id.staff_order_phone_toview);
 
-        public void setItemClickListener(ItemClickListener itemClickListener) {
-            this.itemClickListener = itemClickListener;
-        }
+            btnEdit = (Button)itemView.findViewById(R.id.btnStaffEdit);
+            btnRemove = (Button)itemView.findViewById(R.id.btnStaffRemove);
+            btnDetail = (Button)itemView.findViewById(R.id.btnStaffDetail);
+            btnDirection = (Button)itemView.findViewById(R.id.btnStaffDirection);
 
-        @Override
-        public void onClick(View view) {
 
-            itemClickListener.onClick(view, getAdapterPosition(), false);
-        }
-
-        @Override
-        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            contextMenu.add(0, 0, getAdapterPosition(), "Update");
-            contextMenu.add(0, 1, getAdapterPosition(), "Delete");
         }
     }

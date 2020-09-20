@@ -11,14 +11,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.danny.feedmeappadminstaff.Common.Common;
 import com.danny.feedmeappadminstaff.Holder.AdminOrderViewHolder;
-import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
-import com.danny.feedmeappadminstaff.Model.Order;
 import com.danny.feedmeappadminstaff.Model.Request;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -103,7 +100,7 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
                 holder.btnDetail.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent orderDetail = new Intent(AdminCustomerOrdersActivity.this, OrderDetailActivity.class);
+                        Intent orderDetail = new Intent(AdminCustomerOrdersActivity.this, AdminOrderDetailActivity.class);
                         Common.currentRequest = model;
                         orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
                         startActivity(orderDetail);

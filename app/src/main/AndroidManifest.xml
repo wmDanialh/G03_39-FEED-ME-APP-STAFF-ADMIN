@@ -20,8 +20,18 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrderDetailActivity"></activity>
-        <activity android:name=".ViewListOfCustomerActivity" />
+        <activity android:name=".StaffAddAddressActivity"></activity>
+        <activity android:name=".StaffAddressActivity" />
+        <activity android:name=".AdminStaffSettingsActivity" />
+        <activity android:name=".AdminStaffTermsConditionsActivity" />
+        <activity android:name=".AdminStaffDataPolicyActivity" />
+        <activity android:name=".AdminStaffTermsAndConditions" />
+        <activity android:name=".StaffOrderDetailActivity" />
+        <activity android:name=".AdminEditProfileActivity" />
+        <activity android:name=".AdminChangePasswordActivity" />
+        <activity android:name=".AdminViewProfileActivity" />
+        <activity android:name=".AdminOrderDetailActivity" />
+        <activity android:name=".AdminViewListOfCustomerActivity" />
         <activity android:name=".StaffChangePasswordActivity" />
         <activity android:name=".StaffEditProfileActivity" />
         <activity android:name=".StaffViewProfileActivity" />
@@ -38,7 +48,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".TrackingOrder"
+            android:name=".StaffTrackingOrderActivity"
             android:label="@string/title_activity_tracking_order" />
         <activity android:name=".StaffCustomerOrdersActivity" />
 
@@ -54,10 +64,10 @@
         </service>
 
         <activity android:name=".AdminCustomerOrdersActivity" />
-        <activity android:name=".MenuFoodsManagementActivity" />
-        <activity android:name=".MenuManagementActivity" />
-        <activity android:name=".ViewListOfStaffActivity" />
-        <activity android:name=".RegisterStaffActivity" />
+        <activity android:name=".AdminMenuFoodsManagementActivity" />
+        <activity android:name=".AdminMenuManagementActivity" />
+        <activity android:name=".AdminViewListOfStaffActivity" />
+        <activity android:name=".AdminRegisterStaffActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".AdminMainScreenActivity" />
         <activity android:name=".StaffMainScreenActivity" />

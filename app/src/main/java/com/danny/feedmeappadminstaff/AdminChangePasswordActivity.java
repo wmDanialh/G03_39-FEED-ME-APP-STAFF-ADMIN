@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class StaffChangePasswordActivity extends AppCompatActivity {
+public class AdminChangePasswordActivity extends AppCompatActivity {
 
     Button btnSavePass;
     EditText newPassword, confPassword;
@@ -28,9 +28,9 @@ public class StaffChangePasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staff_change_password);
+        setContentView(R.layout.activity_admin_change_password);
 
-        Toolbar toolbar = findViewById(R.id.toolbarStaffPassword);
+        Toolbar toolbar = findViewById(R.id.toolbarAdminPassword);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Change Staff Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -44,9 +44,8 @@ public class StaffChangePasswordActivity extends AppCompatActivity {
             }
         });
 
-        confPassword = findViewById(R.id.staffconfirmPass);
-        newPassword = findViewById(R.id.staffnewPass);
-        btnSavePass = findViewById(R.id.btnSavePassStaff);
+        newPassword = findViewById(R.id.adminnewPass);
+        btnSavePass = findViewById(R.id.btnSavePassAdmin);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -57,18 +56,19 @@ public class StaffChangePasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String userPasswordNew = newPassword.getText().toString();
+                final String userPasswordNew = newPassword.getText().toString();
+                final String userConfirmNew= confPassword.getText().toString();
 
                 firebaseUser.updatePassword(userPasswordNew).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(StaffChangePasswordActivity.this,"Password Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(StaffChangePasswordActivity.this, StaffViewProfileActivity.class);
+                            Toast.makeText(AdminChangePasswordActivity.this,"Password Updated", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(AdminChangePasswordActivity.this, StaffViewProfileActivity.class);
                             startActivity(intent);
                             finish();
                         }else{
-                            Toast.makeText(StaffChangePasswordActivity.this,"Password Update Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminChangePasswordActivity.this,"Password Update Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

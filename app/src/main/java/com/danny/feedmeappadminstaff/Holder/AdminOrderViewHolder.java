@@ -13,6 +13,7 @@ import com.danny.feedmeappadminstaff.R;
 public class AdminOrderViewHolder extends RecyclerView.ViewHolder{
 
     public TextView txtOrderId, txtOrderStatus, txtOrderAddress,txtOrderPhone;
+    public TextView admintoViewtxtOrderId, admintoViewtxtOrderStatus, admintoViewtxtOrderAddress,admintoViewtxtOrderPhone;
     public Button btnEdit, btnRemove,btnDetail,btnDirection;
 
 
@@ -23,6 +24,11 @@ public class AdminOrderViewHolder extends RecyclerView.ViewHolder{
         txtOrderStatus = (TextView)itemView.findViewById(R.id.Admin_order_status);
         txtOrderId = (TextView)itemView.findViewById(R.id.Admin_order_id);
         txtOrderPhone = (TextView)itemView.findViewById(R.id.Admin_order_phone);
+
+        admintoViewtxtOrderId = (TextView)itemView.findViewById(R.id.Admin_order_id_toView);
+        admintoViewtxtOrderStatus = (TextView)itemView.findViewById(R.id.Admin_order_status_toview);
+        admintoViewtxtOrderPhone = (TextView)itemView.findViewById(R.id.Admin_order_phone_toview);
+        admintoViewtxtOrderAddress = (TextView)itemView.findViewById(R.id.Admin_order_address_toview);
 
         btnEdit = (Button)itemView.findViewById(R.id.btnAdminEdit);
         btnRemove = (Button)itemView.findViewById(R.id.btnAdminRemove);
