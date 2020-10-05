@@ -277,7 +277,7 @@ public class RegisterStaffActivity extends AppCompatActivity {
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference("Staff").child(firebaseAuth.getUid());
-        Staff userProfile = new Staff(address,email, mobile, name, uid);
+        Staff userProfile = new Staff(address,email, mobile, name);
         myRef.setValue(userProfile);
     }
 

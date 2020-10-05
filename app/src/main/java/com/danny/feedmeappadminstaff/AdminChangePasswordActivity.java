@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class AdminChangePasswordActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class AdminChangePasswordActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbarAdminPassword);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Change Staff Password");
+        getSupportActionBar().setTitle("Change Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_dark));
@@ -43,6 +45,8 @@ public class AdminChangePasswordActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        progressDialog =new ProgressDialog(this);
 
         newPassword = findViewById(R.id.adminnewPass);
         btnSavePass = findViewById(R.id.btnSavePassAdmin);
@@ -56,22 +60,34 @@ public class AdminChangePasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String userPasswordNew = newPassword.getText().toString();
-                final String userConfirmNew= confPassword.getText().toString();
+                progressDialog.setMessage("Password is updating..");
+                progressDialog.show();
 
-                firebaseUser.updatePassword(userPasswordNew).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(AdminChangePasswordActivity.this,"Password Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(AdminChangePasswordActivity.this, StaffViewProfileActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(AdminChangePasswordActivity.this,"Password Update Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if(user!=null){
+                    user.updatePassword(newPassword.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(),"Your Password has been changes ",Toast.LENGTH_SHORT).show();
+                                        firebaseAuth.signOut();
+                                        finish();
+                                        Intent intent = new Intent(AdminChangePasswordActivity.this, LoginActivity.class);
+                                        startActivity(intent);
+                                        Toast.makeText(getApplicationContext(),"Please login as your new password to update ",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(),"Password Update Failed ",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+
 
             }
         });

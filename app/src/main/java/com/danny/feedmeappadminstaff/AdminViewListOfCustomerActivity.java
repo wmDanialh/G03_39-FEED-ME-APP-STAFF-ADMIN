@@ -10,28 +10,34 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.danny.feedmeappadminstaff.Holder.CustomerViewHolder;
+import com.danny.feedmeappadminstaff.Holder.StaffViewHolder;
+import com.danny.feedmeappadminstaff.Interface.ItemClickListener;
 import com.danny.feedmeappadminstaff.Model.Customer;
+import com.danny.feedmeappadminstaff.Model.Staff;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminViewListOfCustomerActivity extends AppCompatActivity {
 
-    FirebaseDatabase database;
     DatabaseReference category;
 
     RecyclerView recycler_menu;
     RecyclerView.LayoutManager layoutManager;
+    List<Customer> usersList;
 
-    Customer customer;
-
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private FirebaseAuth firebaseAuth;
 
     FirebaseRecyclerAdapter<Customer, CustomerViewHolder> adapter;
 
@@ -42,7 +48,7 @@ public class AdminViewListOfCustomerActivity extends AppCompatActivity {
 
         Toolbar toolbarProfile = findViewById(R.id.toolbarListOfCustomer);
         setSupportActionBar(toolbarProfile);
-        getSupportActionBar().setTitle("View List of Customer");
+        getSupportActionBar().setTitle("List of Customer");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -53,37 +59,50 @@ public class AdminViewListOfCustomerActivity extends AppCompatActivity {
             }
         });
 
-        database = FirebaseDatabase.getInstance();
-        category = database.getReference("User");
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-
         //Load Menu
         recycler_menu = (RecyclerView)findViewById(R.id.customer_recyclerView);
         recycler_menu.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
-        loadCustomer();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        usersList = new ArrayList<>();
+
+        loadUser();
 
 
     }
 
-    private void loadCustomer() {
+    private void loadUser() {
 
-        FirebaseRecyclerOptions<Customer> options = new FirebaseRecyclerOptions.Builder<Customer>().setQuery(category, Customer.class).build();
+        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+
+        FirebaseRecyclerOptions<Customer> options = new FirebaseRecyclerOptions.Builder<Customer>().setQuery(ref, Customer.class).build();
 
         adapter = new FirebaseRecyclerAdapter<Customer, CustomerViewHolder>(options) {
 
             @Override
             public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position, @NonNull Customer model) {
 
+
+                holder.mCustomerNumberTv.setText(model.getUserMobile());
                 holder.mCustomerNameTv.setText(model.getUserName());
                 holder.mCustomerEmailTv.setText(model.getUserEmail());
-                holder.mCustomerNumberTv.setText(model.getUserMobile());
+                //Picasso.with(getBaseContext()).load(model.getStaffImage()).fit().into(holder.mAvatarIv);
+
+                final Customer clickItem = model;
+                holder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        //Get Category Id and send to new activity
+                        //Because CategoryId is key, so we just get key of this item
+                        Toast.makeText(AdminViewListOfCustomerActivity.this, "" + clickItem.getUserName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
-
             @NonNull
             @Override
             public CustomerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -91,9 +110,8 @@ public class AdminViewListOfCustomerActivity extends AppCompatActivity {
                 return new CustomerViewHolder(view);
             }
         };
-        adapter.notifyDataSetChanged();
-        recycler_menu.setAdapter(adapter);
         adapter.startListening();
-
+        recycler_menu.setAdapter(adapter);
     }
+
 }

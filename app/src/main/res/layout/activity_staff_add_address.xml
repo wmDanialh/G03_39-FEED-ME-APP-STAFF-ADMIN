@@ -36,34 +36,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:id="@+id/labelText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Label As"
-            android:textColor="#000"
-            android:textSize="15sp"/>
-
-
-        <EditText
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_below="@+id/labelText1"
-            android:id="@+id/labelHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:hint="Home / Work / Other"/>
-
-        <TextView
-            android:layout_below="@+id/labelHome"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
             android:id="@+id/labelText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Set your address"
+            android:text="Edit your address"
             android:textColor="#000"
             android:textSize="15sp"/>
 
@@ -71,6 +47,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_below="@+id/labelText2"
             android:id="@+id/labelAddress"
             android:layout_width="match_parent"
@@ -91,7 +68,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
             android:id="@+id/btnSaveAddress"
-            android:text="SAVE AND CONTINUE"
+            android:text="Update Address"
+            android:textAllCaps="false"
             android:textColor="#fff"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"

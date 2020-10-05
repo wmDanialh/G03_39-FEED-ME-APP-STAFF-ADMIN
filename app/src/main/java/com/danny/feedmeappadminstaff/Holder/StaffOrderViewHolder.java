@@ -37,7 +37,6 @@ import com.danny.feedmeappadminstaff.R;
             btnEdit = (Button)itemView.findViewById(R.id.btnStaffEdit);
             btnRemove = (Button)itemView.findViewById(R.id.btnStaffRemove);
             btnDetail = (Button)itemView.findViewById(R.id.btnStaffDetail);
-            btnDirection = (Button)itemView.findViewById(R.id.btnStaffDirection);
 
 
         }

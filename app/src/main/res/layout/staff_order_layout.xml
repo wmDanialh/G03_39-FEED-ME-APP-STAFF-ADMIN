@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             android:text="CONFIRMED"
             android:textStyle="bold"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="true"
             android:textColor="#000"
             android:textSize="15sp"/>
 
@@ -42,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order Shipped ID:"
+                android:textAllCaps="true"
                 android:id="@+id/order_shipped"
                 android:gravity="center_vertical|start"
                 android:textColor="#000"
@@ -72,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status:"
+                android:textAllCaps="true"
                 android:id="@+id/status"
                 android:textColor="#000"
                 android:gravity="center_vertical|start"
@@ -104,6 +108,7 @@
                 android:text="Telephone No:"
                 android:id="@+id/tele"
                 android:textColor="#000"
+                android:textAllCaps="true"
                 android:gravity="center_vertical|start"
                 android:textSize="15sp"/>
             <TextView
@@ -156,6 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/l4"
             android:layout_marginTop="22dp"
+
             android:layout_weight="4"
             android:orientation="horizontal">
 
@@ -189,15 +195,6 @@
                 android:textColor="#000"
                 android:textSize="10sp" />
 
-            <Button
-                android:id="@+id/btnStaffDirection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/fui_transparent"
-                android:fontFamily="@font/basic"
-                android:text="Map"
-                android:textColor="#000"
-                android:textSize="10sp" />
 
         </LinearLayout>
 

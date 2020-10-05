@@ -14,10 +14,6 @@
             android:id="@+id/staffProfile_drawer_myProfile"
             android:icon="@drawable/ic_person"
             android:title="My Profile"/>
-        <item
-            android:id="@+id/staffAddress_drawer_myAddresses"
-            android:icon="@drawable/ic_baseline_location_on_24"
-            android:title="My Addresses"/>
     </group>
 
     <group

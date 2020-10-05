@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
 
     DatabaseReference myRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_login);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
-
 
         Email = (EditText)findViewById(R.id.etEmail);
         Password = (EditText)findViewById(R.id.etPassword);
@@ -171,6 +168,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, StaffMainScreenActivity.class));
                     } else {
                         Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                 }
             });

@@ -65,128 +65,144 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/etStaffName"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_person"
-                        android:layout_marginStart="30dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:layout_marginEnd="30dp"
-                        android:hint="Full Name"
-                        android:inputType="textEmailAddress"
-                        android:padding="15dp"
-                        android:textColor="#000"
-                        android:textColorHint="#000" />
+                        android:id="@+id/newForgotPassLayout"
+                        android:theme="@style/TextLabel"
+                        app:boxStrokeColor="@color/dogerblue"
+                        app:boxStrokeErrorColor="@color/dogerblue"
+                        android:backgroundTint="@color/fui_transparent"
+                        app:startIconTint="@color/dogerblue"
+                        app:startIconDrawable="@drawable/ic_person"
+                        android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:id="@+id/sp1"
-                        android:layout_below="@id/etStaffName"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="30dp"
-                        android:background="#B1B1B1" />
+                        <EditText
+                            android:id="@+id/etStaffName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_marginEnd="30dp"
+                            android:hint="Full Name"
+                            android:inputType="textEmailAddress"
+                            android:padding="15dp"
+                            android:textColor="#000"
+                            android:textColorHint="#000" />
 
-                    <EditText
-                        android:layout_below="@id/sp1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
-                        android:id="@+id/etStaffEmail"
-                        android:hint="Email"
-                        android:backgroundTint="@android:color/transparent"
-                        android:drawableLeft="@drawable/ic_email"
-                        android:inputType="textEmailAddress"
-                        android:padding="15dp"
-                        android:textColor="#000"
-                        android:textColorHint="#000"  />
 
-                    <RelativeLayout
-                        android:id="@+id/sp2"
-                        android:layout_below="@id/etStaffEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="30dp"
-                        android:background="#B1B1B1" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:layout_below="@id/sp2"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etStaffPassword"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
-                        android:drawableLeft="@drawable/ic_lock"
-                        android:hint="Password"
-                        android:backgroundTint="@android:color/transparent"
-                        android:inputType="textPassword"
-                        android:padding="15dp"
-                        android:textColor="#000"
-                        android:textColorHint="#000"  />
+                        android:id="@+id/emailRegister"
+                        android:theme="@style/TextLabel"
+                        app:boxStrokeColor="@color/dogerblue"
+                        app:boxStrokeErrorColor="@color/dogerblue"
+                        android:backgroundTint="@color/fui_transparent"
+                        app:startIconTint="@color/dogerblue"
+                        android:layout_below="@+id/newForgotPassLayout"
+                        app:startIconDrawable="@drawable/ic_email"
+                        android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:id="@+id/sp3"
-                        android:layout_below="@id/etStaffPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="30dp"
-                        android:background="#B1B1B1" />
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:id="@+id/etStaffEmail"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:padding="15dp"
+                            android:textColor="#000"
+                            android:textColorHint="#000"  />
 
-                    <EditText
-                        android:layout_below="@+id/sp3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etStaffMobile"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
-                        android:drawableLeft="@drawable/ic_phone"
-                        android:hint="Mobile Number"
-                        android:backgroundTint="@android:color/transparent"
-                        android:inputType="number"
-                        android:padding="15dp"
-                        android:textColor="#000"
-                        android:textColorHint="#000"  />
 
-                    <RelativeLayout
-                        android:id="@+id/sp4"
-                        android:layout_below="@id/etStaffMobile"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="30dp"
-                        android:background="#B1B1B1" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:layout_below="@+id/sp4"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:id="@+id/etStaffAddress"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
-                        android:hint="Address"
-                        android:backgroundTint="@android:color/transparent"
-                        android:inputType="textLongMessage"
-                        android:padding="15dp"
-                        android:textColor="#000"
-                        android:textColorHint="#000"  />
+                        android:id="@+id/passwordRegister"
+                        android:theme="@style/TextLabel"
+                        app:passwordToggleEnabled="true"
+                        app:boxStrokeColor="@color/dogerblue"
+                        app:boxStrokeErrorColor="@color/dogerblue"
+                        android:layout_below="@id/emailRegister"
+                        app:startIconDrawable="@drawable/ic_lock"
+                        app:startIconTint="@color/dogerblue"
+                        android:backgroundTint="@color/fui_transparent"
+                        android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:id="@+id/sp5"
-                        android:layout_below="@id/etStaffAddress"
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etStaffPassword"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:hint="Password"
+                            android:backgroundTint="@android:color/transparent"
+                            android:inputType="textPassword"
+                            android:padding="15dp"
+                            android:textColor="#000"
+                            android:textColorHint="#000"  />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="4dp"
-                        android:textColor="#000"
-                        android:background="#B1B1B1" />
+                        android:id="@+id/mobileRegister"
+                        android:theme="@style/TextLabel"
+                        app:boxStrokeColor="@color/dogerblue"
+                        app:boxStrokeErrorColor="@color/dogerblue"
+                        android:layout_below="@id/passwordRegister"
+                        android:backgroundTint="@color/fui_transparent"
+                        app:startIconTint="@color/dogerblue"
+                        app:startIconDrawable="@drawable/ic_email"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etStaffMobile"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:hint="Mobile Number"
+                            android:backgroundTint="@android:color/transparent"
+                            android:inputType="phone"
+                            android:padding="15dp"
+                            android:textColor="#000"
+                            android:textColorHint="#000"  />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/adddressRegister"
+                        android:theme="@style/TextLabel"
+                        app:boxStrokeColor="@color/dogerblue"
+                        app:boxStrokeErrorColor="@color/dogerblue"
+                        android:layout_below="@id/mobileRegister"
+                        app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+                        app:startIconTint="@color/dogerblue"
+                        android:backgroundTint="@color/fui_transparent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/etStaffAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_below="@+id/sp4"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:hint="Address"
+                            android:inputType="textLongMessage"
+                            android:padding="15dp"
+                            android:textColor="#000"
+                            android:textColorHint="#000" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
                         android:id="@+id/btnRegisterStaff"
@@ -199,8 +215,8 @@
                         android:text="Register Staff"
                         android:tint="@android:color/white"
                         android:textColor="#fff"
-                        android:layout_marginBottom="5dp"
-                        android:layout_below="@+id/sp5"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/adddressRegister"
                         android:backgroundTint="@color/royalBlue"
                         tools:ignore="RelativeOverlap" />
 

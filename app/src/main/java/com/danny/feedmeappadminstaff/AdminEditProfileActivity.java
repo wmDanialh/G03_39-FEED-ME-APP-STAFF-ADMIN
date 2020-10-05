@@ -197,7 +197,7 @@ public class AdminEditProfileActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
                         Toast.makeText(AdminEditProfileActivity.this,"Upload Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AdminEditProfileActivity.this, StaffViewProfileActivity.class));
+                        startActivity(new Intent(AdminEditProfileActivity.this, AdminMainScreenActivity.class));
                     }
                 });
 

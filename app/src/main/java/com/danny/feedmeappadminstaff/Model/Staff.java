@@ -6,23 +6,25 @@ public class Staff {
     public String staffName;
     public String staffEmail;
     public String staffAddress;
-    public String uid;
 
     public Staff() {
     }
 
-    public Staff(String staffAddress,String staffEmail, String staffMobile, String staffName , String uid) {
+    public Staff(String staffAddress,String staffEmail, String staffMobile, String staffName) {
         this.staffAddress = staffAddress;
         this.staffEmail = staffEmail;
         this.staffMobile = staffMobile;
         this.staffName = staffName;
-        this.uid = uid;
     }
 
     public Staff(String name, String email, String mobile) {
         this.staffEmail = email;
         this.staffMobile = mobile;
         this.staffName = name;
+    }
+
+    public Staff(String staffAddress) {
+        this.staffAddress = staffAddress;
     }
 
     public String getStaffMobile() {
@@ -57,11 +59,4 @@ public class Staff {
         this.staffAddress = staffAddress;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
 }

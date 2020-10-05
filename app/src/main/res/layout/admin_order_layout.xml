@@ -189,16 +189,6 @@
                 android:textColor="#000"
                 android:textSize="10sp" />
 
-            <Button
-                android:id="@+id/btnAdminDirection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/fui_transparent"
-                android:fontFamily="@font/basic"
-                android:text="Map"
-                android:textColor="#000"
-                android:textSize="10sp" />
-
         </LinearLayout>
 
     </RelativeLayout>

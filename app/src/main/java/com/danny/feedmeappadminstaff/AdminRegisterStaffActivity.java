@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -35,17 +36,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdminRegisterStaffActivity extends AppCompatActivity {
 
-    CircleImageView ImgUserPhoto;
     static int PReqCode = 1 ;
     static int REQUESCODE = 1 ;
     Uri pickedImgUri ;
+    private ProgressDialog progressDialog;
 
     private EditText staffName, staffPassword, staffEmail, staffMobile, staffAddress;
     private Button regStaffButton;
 
     private FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuthForStaff;
+    FirebaseUser firebaseUser;
 
-    String email, name, password, mobile, address, image, uid;
+    String email, name, password, mobile, address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,11 @@ public class AdminRegisterStaffActivity extends AppCompatActivity {
         });
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        firebaseAuthForStaff = FirebaseAuth.getInstance();
+
+        progressDialog = new ProgressDialog(this);
 
         regStaffButton = findViewById(R.id.btnRegisterStaff);
         staffAddress = findViewById(R.id.etStaffAddress);
@@ -77,167 +85,37 @@ public class AdminRegisterStaffActivity extends AppCompatActivity {
         regStaffButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validate()){
-                    //Upload data to the database
-                    String staff_name = staffName.getText().toString();
-                    String staff_email = staffEmail.getText().toString().trim();
-                    String staff_password = staffPassword.getText().toString().trim();
-                    String staff_address = staffAddress.getText().toString();
-                    String staff_mobile = staffMobile.getText().toString();
+                if(validate()) {
+                    progressDialog.setMessage("Please wait ...");
+                    progressDialog.show();
 
-                    if( staff_name.isEmpty() || staff_email.isEmpty() || staff_password.isEmpty()  || staff_address.isEmpty() || staff_mobile.isEmpty()) {
-                        // something goes wrong : all fields must be filled
-                        // we need to display an error message
-                        Toast.makeText(AdminRegisterStaffActivity.this,"Please Verify all fields",Toast.LENGTH_SHORT).show();
-                        //regBtn.setVisibility(View.VISIBLE);
-                        //loadingProgress.setVisibility(View.INVISIBLE);
-                    }
-                    else {
-                        // everything is ok and all fields are filled now we can start creating user account
-                        // CreateUserAccount method will try to create the user if the email is valid
-                        CreateUserAccount(email,name,password);
-                    }
+                    String user_email = staffEmail.getText().toString().trim();
+                    String user_password = staffPassword.getText().toString().trim();
 
-                }
-
-            }
-        });
-        ImgUserPhoto = findViewById(R.id.imgRegisterStaff) ;
-
-        ImgUserPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (Build.VERSION.SDK_INT >= 22) {
-                    checkAndRequestForPermission();
-                }
-                else
-                {
-                    openGallery();
-                }
-
-            }
-        });
-    }
-    private void CreateUserAccount(String email, final String name, String password) {
-        // this method create user account with specific email and password
-
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // user account created successfully
-                            showMessage("Account created");
-                            // after we created user account we need to update his profile picture and name
-                            updateUserInfo(name, pickedImgUri, firebaseAuth.getCurrentUser());
-                            sendUserData();
-                            finish();
-                        } else {
-                            // account creation failed
-                            showMessage("account creation failed" + task.getException().getMessage());
-                            //regBtn.setVisibility(View.VISIBLE);
-                            //loadingProgress.setVisibility(View.INVISIBLE);
+                    firebaseAuthForStaff.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                sendUserData();
+                                progressDialog.dismiss();
+                                Toast.makeText(AdminRegisterStaffActivity.this, "New Staff Account has been created!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(AdminRegisterStaffActivity.this, StaffMainScreenActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else {
+                                progressDialog.dismiss();
+                                Toast.makeText(AdminRegisterStaffActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(AdminRegisterStaffActivity.this, "Staff Account cannot be create", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
-    }
-    private void updateUserInfo(final String name, Uri pickedImgUri, final FirebaseUser currentUser) {
-        // first we need to upload user photo to firebase storage and get url
-        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("Staff_photos");
-        final StorageReference imageFilePath = mStorage.child(pickedImgUri.getLastPathSegment());
-        imageFilePath.putFile(pickedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    });
 
-                // image uploaded succesfully
-                // now we can get our image url
-
-                imageFilePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        // uri contain user image url
-                        UserProfileChangeRequest profleUpdate = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(name)
-                                .setPhotoUri(uri)
-                                .build();
-                        currentUser.updateProfile(profleUpdate)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-
-                                        if (task.isSuccessful()) {
-                                            // user info updated successfully
-                                            showMessage("Register Complete");
-                                            updateUI();
-                                        }
-                                    }
-                                });
-
-                    }
-                });
-
+                }
             }
         });
-
-
     }
-
-    private void updateUI() {
-        //Intent homeActivity = new Intent(getApplicationContext(),AdminMainScreenActivity.class);
-        //startActivity(homeActivity);
-        finish();
-    }
-
     // simple method to show toast message
-    private void showMessage(String message) {
-        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
-    }
-
-    private void openGallery() {
-        //TODO: open gallery intent and wait for user to pick an image !
-
-        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent,REQUESCODE);
-    }
-
-    private void checkAndRequestForPermission() {
-
-
-        if (ContextCompat.checkSelfPermission(AdminRegisterStaffActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(AdminRegisterStaffActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-                Toast.makeText(AdminRegisterStaffActivity.this,"Please accept for required permission",Toast.LENGTH_SHORT).show();
-
-            }
-
-            else
-            {
-                ActivityCompat.requestPermissions(AdminRegisterStaffActivity.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        PReqCode);
-            }
-
-        }
-        else
-            openGallery();
-
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK && requestCode == REQUESCODE && data != null ) {
-            // the user has successfully picked an image
-            // we need to save its reference to a Uri variable
-            pickedImgUri = data.getData() ;
-            ImgUserPhoto.setImageURI(pickedImgUri);
-        }
-    }
 
     private Boolean validate(){
         Boolean result = false;
@@ -268,10 +146,8 @@ public class AdminRegisterStaffActivity extends AppCompatActivity {
 
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference("Staff").child(firebaseAuth.getUid());
-        Staff userProfile = new Staff(address,email, mobile, name, uid);
+        DatabaseReference myRef = firebaseDatabase.getReference("Staff").child(firebaseAuthForStaff.getUid());
+        Staff userProfile = new Staff(address,email, mobile, name);
         myRef.setValue(userProfile);
     }
-
-
 }

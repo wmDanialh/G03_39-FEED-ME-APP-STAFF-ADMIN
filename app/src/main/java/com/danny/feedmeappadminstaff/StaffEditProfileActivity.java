@@ -94,14 +94,17 @@ public class StaffEditProfileActivity extends AppCompatActivity {
         newUserName = (EditText)findViewById(R.id.editStaffProfileName);
         newUserEmail = (EditText)findViewById(R.id.editStaffEmail);
         newUserMobile = (EditText)findViewById(R.id.editStaffMobile);
+
         save = (Button)findViewById(R.id.btnSaveStaff);
         profilePic = (ImageView)findViewById(R.id.imgStaffEditProfile);
         progressDialog = new ProgressDialog(this);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         final DatabaseReference databaseReference = firebaseDatabase.getReference("Staff").child(firebaseAuth.getUid());
 
@@ -203,7 +206,7 @@ public class StaffEditProfileActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
                         Toast.makeText(StaffEditProfileActivity.this,"Upload Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(StaffEditProfileActivity.this, StaffViewProfileActivity.class));
+                        startActivity(new Intent(StaffEditProfileActivity.this, StaffMainScreenActivity.class));
                     }
                 });
 

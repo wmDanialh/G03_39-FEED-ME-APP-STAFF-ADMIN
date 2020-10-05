@@ -92,8 +92,30 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
                 holder.btnRemove.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        deleteOrder(adapter.getRef(position).getKey());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(AdminCustomerOrdersActivity.this);
 
+                        builder.setTitle("Delete the recent order");
+                        builder.setMessage("Are you sure you want to delete the user order?");
+
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Do nothing but close the dialog
+                                deleteOrder(adapter.getRef(position).getKey());
+                            }
+                        });
+
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Do nothing
+                                dialog.dismiss();
+                            }
+                        });
+
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
                 });
 
@@ -107,12 +129,6 @@ public class AdminCustomerOrdersActivity extends AppCompatActivity {
                     }
                 });
 
-                holder.btnDirection.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
             }
 
             @NonNull

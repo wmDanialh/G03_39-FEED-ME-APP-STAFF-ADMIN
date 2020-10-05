@@ -84,31 +84,6 @@ public class ViewListOfStaffActivity extends AppCompatActivity {
 
     }
 
-    private void getAllUsers() {
-
-        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Staff");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                usersList.clear();
-                for(DataSnapshot ds: snapshot.getChildren()){
-                    Staff staff = ds.getValue(Staff.class);
-
-                    if(!staff.getUid().equals(fUser.getUid()))
-                        usersList.add(staff);
-                }
-                //adapterStaff = new AdapterStaff(this,usersList);
-                //recyclerView.setAdapter(adapterStaff);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-
     private void loadUser() {
 
         final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();

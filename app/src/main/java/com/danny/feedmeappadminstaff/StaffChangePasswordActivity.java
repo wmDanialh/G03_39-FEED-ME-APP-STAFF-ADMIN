@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class StaffChangePasswordActivity extends AppCompatActivity {
     EditText newPassword, confPassword;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
     FirebaseDatabase firebaseDatabase;
 
     @Override
@@ -44,7 +46,8 @@ public class StaffChangePasswordActivity extends AppCompatActivity {
             }
         });
 
-        confPassword = findViewById(R.id.staffconfirmPass);
+        progressDialog =new ProgressDialog(this);
+
         newPassword = findViewById(R.id.staffnewPass);
         btnSavePass = findViewById(R.id.btnSavePassStaff);
 
@@ -57,21 +60,34 @@ public class StaffChangePasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String userPasswordNew = newPassword.getText().toString();
+                progressDialog.setMessage("Password is updating..");
+                progressDialog.show();
 
-                firebaseUser.updatePassword(userPasswordNew).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(StaffChangePasswordActivity.this,"Password Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(StaffChangePasswordActivity.this, StaffViewProfileActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(StaffChangePasswordActivity.this,"Password Update Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if(user!=null){
+                    user.updatePassword(newPassword.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(),"Your Password has been changes ",Toast.LENGTH_SHORT).show();
+                                        firebaseAuth.signOut();
+                                        finish();
+                                        Intent intent = new Intent(StaffChangePasswordActivity.this, LoginActivity.class);
+                                        startActivity(intent);
+                                        Toast.makeText(getApplicationContext(),"Please login as your new password to update ",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(),"Password Update Failed ",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+
 
             }
         });

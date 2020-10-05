@@ -33,6 +33,5 @@ public class AdminOrderViewHolder extends RecyclerView.ViewHolder{
         btnEdit = (Button)itemView.findViewById(R.id.btnAdminEdit);
         btnRemove = (Button)itemView.findViewById(R.id.btnAdminRemove);
         btnDetail = (Button)itemView.findViewById(R.id.btnAdminDetail);
-        btnDirection = (Button)itemView.findViewById(R.id.btnAdminDirection);
     }
 }
