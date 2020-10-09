@@ -15,4 +15,7 @@ FeedMe Application Java Version (STAFF AND ADMIN )
 
 	2.	Link of the Source Code - https://github.com/wmDanialh/G03_39-FEED-ME-APP-STAFF-ADMIN.git
 
-	3.	
+	3.	a.	Username and Password (ADMIN) - email: wanmohddanialhakim@gmail.com 	Password:admin1234
+		b.	Username and Password (STAFF) - email: stafffeedme@gmail.com 		Password:staff1234
+	
+	4.	Username and Password used for database (firebase) - email: feedmeappjava@gmail.com  Password: FeedMeApp123
